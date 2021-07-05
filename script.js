@@ -7,22 +7,40 @@ const random = Math.floor(Math.random() * computerPlay.length)
 let playerSelection = prompt("Choose!", "");
 let computerSelection = computerPlay[random];
 
+let playerScore = 0;
+let computerScore = 0;
+
+function game() {
+  while (computerScore < 5 && playerScore < 5) {
+    playRound(playerSelection, computerSelection);
+  }
+  if (computerScore == 5) {
+    return "You lose u fucking useless piece of trash!!!!!!!!!";
+  }
+  else if (playerScore == 5) {
+    return "You won and please kill urself";
+  }
+}
+
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
     if (computerSelection == playerSelection) {
         return "Draw!";
-      } else if (
+      }
+      else if (
         (computerSelection == "rock" && playerSelection == "scissors") ||
         (computerSelection == "scissors" && playerSelection == "paper") ||
         (computerSelection == "paper" && playerSelection == "rock")
-      ) { return "You lose!";
+      ) {
+          return "You lose!" && computerScore + 1;
         }
         else {
-            return "You win!";
+            return "You win!" && playerScore + 1;
         }
 }
 
-
-console.log(playRound(playerSelection, computerSelection));
+console.log(game());
+// console.log(playRound(playerSelection, computerSelection));
 console.log(computerSelection);
+console.log(computerScore, playerScore);
