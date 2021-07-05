@@ -33,10 +33,12 @@ function playRound(playerSelection, computerSelection) {
         (computerSelection == "scissors" && playerSelection == "paper") ||
         (computerSelection == "paper" && playerSelection == "rock")
       ) {
-          return "You lose!" && computerScore + 1;
+          computerScore++;
+          return "You lose!";
         }
         else {
-            return "You win!" && playerScore + 1;
+          playerScore++;
+          return "You win!";
         }
 }
 
