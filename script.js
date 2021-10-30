@@ -10,17 +10,17 @@ let computerSelection = computerPlay[random];
 let playerScore = 0;
 let computerScore = 0;
 
-function game() {
-  while (computerScore < 5 && playerScore < 5) {
-    playRound(playerSelection, computerSelection);
-  }
-  if (computerScore == 5) {
-    return "You lose u fucking useless piece of trash!!!!!!!!!";
-  }
-  else if (playerScore == 5) {
-    return "You won and please kill urself";
-  }
-}
+// function game() {
+//   while (computerScore < 5 && playerScore < 5) {
+//     playRound(playerSelection, computerSelection);
+//   }
+//   if (computerScore == 5) {
+//     return "You lose u fucking useless piece of trash!!!!!!!!!";
+//   }
+//   else if (playerScore == 5) {
+//     return "You won and please kill urself";
+//   }
+// }
 
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
