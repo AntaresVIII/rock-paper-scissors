@@ -4,27 +4,28 @@ const computerPlay = ["Rock", "Paper", "Scissors"];
 const random = Math.floor(Math.random() * computerPlay.length)
     // console.log(computerPlay[random]);
 
-let playerSelection = prompt("Choose!", "");
+let playerSelection = "";
 let computerSelection = computerPlay[random];
-
 let playerScore = 0;
 let computerScore = 0;
 
-// function game() {
-//   while (computerScore < 5 && playerScore < 5) {
-//     playRound(playerSelection, computerSelection);
-//   }
-//   if (computerScore == 5) {
-//     return "You lose u fucking useless piece of trash!!!!!!!!!";
-//   }
-//   else if (playerScore == 5) {
-//     return "You won and please kill urself";
-//   }
-// }
+document.getElementById("rock").addEventListener("click", function() { playerSelection = "rock" });
+document.getElementById("paper").addEventListener("click", function() { playerSelection = "paper" });
+document.getElementById("scissors").addEventListener("click", function() { playerSelection = "scissors" });
+
+function game() {
+  while (computerScore < 5 && playerScore < 5) {
+    playRound(playerSelection, computerSelection);
+  }
+  if (computerScore == 5) {
+    return "You lose u fucking useless piece of trash!!!!!!!!!";
+  }
+  else if (playerScore == 5) {
+    return "You won and please kill urself";
+  }
+}
 
 function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
     if (computerSelection == playerSelection) {
         return "Draw!";
       }
@@ -42,7 +43,7 @@ function playRound(playerSelection, computerSelection) {
         }
 }
 
-console.log(game());
+// console.log(game());
 // console.log(playRound(playerSelection, computerSelection));
-console.log(computerSelection);
-console.log(computerScore, playerScore);
+// console.log(computerSelection);
+// console.log(computerScore, playerScore);
