@@ -9,25 +9,22 @@ let computerSelection = computerPlay[random];
 let playerScore = 0;
 let computerScore = 0;
 
-document.getElementById("rock").addEventListener("click", function() { playerSelection = "rock" });
-document.getElementById("paper").addEventListener("click", function() { playerSelection = "paper" });
-document.getElementById("scissors").addEventListener("click", function() { playerSelection = "scissors" });
-
-function game() {
+function game(choice) {
+  let playerSelection = choice;
   while (computerScore < 5 && playerScore < 5) {
     playRound(playerSelection, computerSelection);
   }
   if (computerScore == 5) {
-    return "You lose u fucking useless piece of trash!!!!!!!!!";
+    document.getElementById("game-result").innerHTML = "You lost the game!";
   }
   else if (playerScore == 5) {
-    return "You won and please kill urself";
+    document.getElementById("game-result").innerHTML = "You won the game!";
   }
 }
 
 function playRound(playerSelection, computerSelection) {
     if (computerSelection == playerSelection) {
-        return "Draw!";
+        document.getElementById("round-result").innerHTML = "Draw!";
       }
       else if (
         (computerSelection == "rock" && playerSelection == "scissors") ||
@@ -35,13 +32,17 @@ function playRound(playerSelection, computerSelection) {
         (computerSelection == "paper" && playerSelection == "rock")
       ) {
           computerScore++;
-          return "You lose!";
+          document.getElementById("round-result").innerHTML = "You lose!";
         }
         else {
           playerScore++;
-          return "You win!";
+          document.getElementById("round-result").innerHTML = "You win!";
         }
 }
+
+document.getElementById("rock").addEventListener("click", () => { game("rock") });
+document.getElementById("paper").addEventListener("click", () => { game("paper") });
+document.getElementById("scissors").addEventListener("click", () => { game("scissors") });
 
 // console.log(game());
 // console.log(playRound(playerSelection, computerSelection));
