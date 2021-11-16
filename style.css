@@ -1,0 +1,15 @@
+body {
+    background-color: rgb(147, 205, 231);
+}
+button {
+    color:rgb(255, 255, 255);
+    background-color: rgb(94, 94, 134);
+    padding: 0.5em;
+    border-color: rgb(36, 58, 73);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 0.5em;
+}
+#resetbtn {
+    align-items: auto;
+}
