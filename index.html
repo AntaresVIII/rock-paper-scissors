@@ -1,8 +1,35 @@
 <html>
+
 <head>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<p>Rock, Paper, Scissors</p>
+    <div id="buttons">
+        <h1>Rock, Paper, Scissors</h1>
+        <h2>Choose your weapon:</h2>
+            <button id="rock">ROCK</button>
+            <button id="paper">PAPER</button>
+            <button id="scissors">SCISSORS</button>
+
+    </div>
+    <div id="game">
+        <div id="choices">
+            <p>You chose:</p><p id="playerchoice"></p>
+            <p>Computer chose:</p><p id="computerchoice"></p>
+            <div id="round-result"></div>
+            <div id="game-result"></div>
+        </div>
+
+        <div id="score">
+            <p>Your score:</p><p id="playerscore"></p>
+            <p>Computer score:</p><p id="computerscore"></p>
+        </div>
+    </div>
+    <div>
+        <button id="resetbtn">Reset</button>
+    </div>
 </body>
+
 </html>

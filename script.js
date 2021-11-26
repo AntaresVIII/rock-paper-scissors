@@ -1,59 +1,71 @@
-const computerPlay = ["Rock", "Paper", "Scissors"];
-let playerSelection;
+let playerSelection = "";
+let computerSelection = "";
 let playerScore = 0;
-let computerSelection;
 let computerScore = 0;
-let random;
-let gameRounds = 1;
-	
-function game() {
-	while (gameRounds <= 5)
-	{
-		playerSelection = prompt("Choose!", "");
-		random = Math.floor(Math.random() * computerPlay.length);
-		computerSelection = computerPlay[random];
-		console.log(playRound(playerSelection, computerSelection));
-		console.log("You chose:", playerSelection, "& Computer chose:", computerSelection);
-		console.log("Your Score:", playerScore, "Computer Score:", computerScore);
-		console.log("Round:", gameRounds);
-		gameRounds++;
-	}
 
-	if (computerScore > playerScore) {
-		console.log("YOU LOOSE!");
-	}
-	else if (computerScore == playerScore) 
-	{
-		console.log("IT'S A DRAW!");
-	}
-	else
-	{
-		console.log("YOU WIN!");
-	}
-	return "Game over.";
+const computerPlay = ["Rock", "Paper", "Scissors"];
+
+
+function playRound(playerSelection) {
+  computerSelection = computerPlay[Math.floor(Math.random() * computerPlay.length)];
+    if (computerSelection == playerSelection) {
+        document.getElementById("round-result").innerHTML = "Draw!";
+        document.getElementById("game-result").innerHTML = "";
+      }
+      else if (
+        (computerSelection == "Rock" && playerSelection == "Scissors") ||
+        (computerSelection == "Scissors" && playerSelection == "Paper") ||
+        (computerSelection == "Paper" && playerSelection == "Rock")
+      ) {
+          computerScore++;
+          document.getElementById("round-result").innerHTML = "You lose!";
+          document.getElementById("game-result").innerHTML = "";
+        }
+        else {
+          playerScore++;
+          document.getElementById("round-result").innerHTML = "You win!";
+          document.getElementById("game-result").innerHTML = "";
+        }
+        console.log(playerSelection);
+        console.log(computerSelection);
+        console.log(playerScore);
+        console.log(computerScore);
+        document.getElementById("playerchoice").innerHTML = playerSelection;
+        document.getElementById("computerchoice").innerHTML = computerSelection;
+        showScore();
+        game();
 }
-		
-function playRound(playerSelection, computerSelection) {
-	playerSelection = playerSelection.toLowerCase();
-	computerSelection = computerSelection.toLowerCase();
-	if (computerSelection == playerSelection) 
-		{
-			return "Draw!";
-		}
-	else if (
-		(computerSelection == "rock" && playerSelection == "scissors") ||
-		(computerSelection == "scissors" && playerSelection == "paper") ||
-		(computerSelection == "paper" && playerSelection == "rock")
-		) 
-		{
-			computerScore++;
-			return "Computer +1";
-		}
-	else 
-		{
-			playerScore++;
-			return "You +1";
-		}
-	}
 
-console.log(game());
+function game() {
+  if (computerScore == 5) {
+    document.getElementById("game-result").innerHTML = "You lost the game!";
+    playerScore = 0;
+    computerScore = 0;
+  }
+  else if (playerScore == 5) {
+    document.getElementById("game-result").innerHTML = "You won the game!";
+    playerScore = 0;
+    computerScore = 0;
+  }
+}
+
+function showScore() {
+  document.getElementById("playerscore").innerHTML = playerScore;
+  document.getElementById("computerscore").innerHTML = computerScore;
+}
+
+function reset() {
+  playerScore = 0;
+  computerScore = 0;
+  document.getElementById("round-result").innerHTML = "";
+  document.getElementById("game-result").innerHTML = "";
+  document.getElementById("playerchoice").innerHTML = "";
+  document.getElementById("computerchoice").innerHTML = "";
+  showScore();
+}
+
+showScore();
+document.getElementById("rock").addEventListener("click", () => { playRound("Rock") });
+document.getElementById("paper").addEventListener("click", () => { playRound("Paper") });
+document.getElementById("scissors").addEventListener("click", () => { playRound("Scissors") });
+document.getElementById("resetbtn").addEventListener("click", () => { reset() });
